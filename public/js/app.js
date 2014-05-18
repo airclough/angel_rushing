@@ -1,10 +1,15 @@
 define(
-  [ 'backbone' ],
-  function( Backbone ) {
+  [ 'backbone',
+    'jquery',
+    'win',
+    'views/app' ],
+  function( Backbone, $, Win, AppView ) {
     'use strict';
 
     function init() {
-      console.log( Backbone );
+      var win = new Win();
+
+      new AppView( { win: win } );
     }
 
     return {

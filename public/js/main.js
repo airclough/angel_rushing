@@ -1,10 +1,10 @@
 require.config({
   baseUrl: '/js',
   paths: {
-    jquery    : '../bower_components/jquery/dist/jquery.min',
-    underscore: '../bower_components/underscore/underscore',
     backbone  : '../bower_components/backbone/backbone',
-    d3        : '../bower_components/d3/d3.min'
+    d3        : '../bower_components/d3/d3',
+    jquery    : '../bower_components/jquery/dist/jquery',
+    underscore: '../bower_components/underscore/underscore'
   }
 });
 
