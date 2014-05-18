@@ -1,0 +1,33 @@
+{
+  "name": "angel_rushing",
+  "description": "Angel Rushing a relevant code example.",
+  "version": "0.0.1",
+  "author": "Robby Fairclough <robby.fairclough@gmail.com>",
+  "contrib": [
+    {
+      "name": "Robby Fairclough",
+      "email": "robby.fairclough@gmail.com",
+      "github": "juniorSE7EN"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juniorSE7EN/angel_rushing"
+  },
+  "homepage": "",
+  "private": true,
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.3.x"
+  },
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "ejs": "^1.0.0",
+    "express": "^4.2.0"
+  },
+  "devDependencies": {
+    "bower": "^1.3.3"
+  }
+}
