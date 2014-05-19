@@ -5,9 +5,9 @@ define(
     'use strict';
 
     var Win = function() {
-      this.$el    = $( window );
-      this.height = this.$el.height();
-      this.width  = this.$el.width();
+      this.$el      = $( window );
+      this.width    = this.$el.width();
+      this.viewport = $( 'body' ).height()
 
       this.bindEventListeners();
     };
@@ -27,6 +27,10 @@ define(
 
     Win.prototype.onResize = function( e ) {
       this.trigger( 'Win:resize', e );
+    };
+
+    Win.prototype.setHeight = function( $el ) {
+      this.height = $el.height();
     };
 
     return Win;

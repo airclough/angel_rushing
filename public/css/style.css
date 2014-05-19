@@ -36,7 +36,52 @@ ol, ul {
   list-style: none;
 }
 
-#id-840.fade {
+/* tags */
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 16px;
+  color: #333;
+  line-height: 1;
+  background-color: #fff;
+}
+
+/* skills */
+#skills {
+  height: 4000px;
+}
+
+/* world */
+#world {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+svg {
+  display: block;
+  padding: 0;
+  margin: 0;
+
+  -webkit-transform: translateY(-20%);
+     -moz-transform: translateY(-20%);
+      -ms-transform: translateY(-20%);
+       -o-transform: translateY(-20%);
+          transform: translateY(-20%);
+}
+
+path[id*="country-id-"] {
+  -webkit-transition: opacity .5s;
+     -moz-transition: opacity .5s;
+       -o-transition: opacity .5s;
+          transition: opacity .5s;
+}
+
+#country-id-840.fade {
   opacity: 1;
 }
 

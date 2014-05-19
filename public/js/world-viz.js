@@ -3,7 +3,7 @@ define(
   function( d3 ) {
     'use strict';
 
-    var svg, features, world, country, width, colorScale, latScale, projection, path;
+    var svg, features, world, country, height, width, viewport, colorScale, latScale, projection, path;
 
     var countries = {};
 
@@ -15,10 +15,18 @@ define(
 
       for( ; i < l; i++ ) {
         country = features[ i ];
+
+        if( countries[ country.id ] ||
+            country.id === -99 )
+          country.id = ~country.id * l + i;
+
         countries[ country.id ] = {};
         countries[ country.id ].lat = Infinity;
 
-        traverse( country.geometry.coordinates );
+        // u-s-a! u-s-a! u-s-a!
+        643 === country.id
+          ? countries[ country.id ].lat = 180
+          : traverse( country.geometry.coordinates );
       }
     }
 
@@ -41,7 +49,7 @@ define(
 
     function cacheCountries() {
       for( var prop in countries )
-        countries[ prop ].$el = d3.select( '#id-' + prop );
+        countries[ prop ].$el = d3.select( '#country-id-' + prop );
     }
 
     function setScales() {
@@ -50,7 +58,7 @@ define(
         .range( [ 'rgb(204,204,204)', 'rgb(220,20,60)' ] );
 
       latScale = d3.scale.linear()
-        .domain( [ 0, width / 2 ] )
+        .domain( [ 0, height - viewport ] )
         .range( [ -180, 180 ] );
     }
 
@@ -78,7 +86,9 @@ define(
      */
 
     function init( el, win ) {
-      width = win.width;
+      height   = win.height
+      width    = win.width;
+      viewport = win.viewport
 
       setScales();
       setGeo();
@@ -98,10 +108,10 @@ define(
 
         svg.append( 'g' )
           .selectAll( 'path' )
-            .data( topojson.feature( world, world.objects.countries ).features )
+            .data( features )
           .enter()
             .append( 'path' )
-              .attr( 'id', function( d ) { return 'id-' + d.id; } )
+              .attr( 'id', function( d ) { return 'country-id-' + d.id; } )
               .attr( 'class', function( d ) { if( d.id !== 840 ) return 'fade'; } )
               .attr( 'fill', function( d ) { return colorScale( countries[ d.id ].lat ) } )
               .attr( 'd', path );

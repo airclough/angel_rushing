@@ -10,7 +10,15 @@ define(
       initialize: function( opts ) {
         this.win = opts.win;
 
-        this.renderWorldView();
+        this.renderSkillsView()
+          .renderWorldView();
+      },
+
+      renderSkillsView: function() {
+        this.$el.append( '<div id="skills"></div>' );
+
+        this.win.setHeight( this.$el );
+        return this;
       },
 
       renderWorldView: function() {
