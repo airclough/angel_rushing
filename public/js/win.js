@@ -20,7 +20,9 @@ define(
     };
 
     Win.prototype.onScroll = function( e ) {
-      this.trigger( 'Win:scroll', e );
+      this.scrollTop = this.$el.scrollTop();
+
+      this.trigger( 'Win:scroll', this );
     };
 
     Win.prototype.onResize = function( e ) {

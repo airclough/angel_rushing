@@ -39,13 +39,18 @@ define(
           : o;
     }
 
+    function cacheCountries() {
+      for( var prop in countries )
+        countries[ prop ].$el = d3.select( '#id-' + prop );
+    }
+
     function setScales() {
       colorScale = d3.scale.linear()
         .domain( [ -180, 180 ] )
         .range( [ 'rgb(204,204,204)', 'rgb(220,20,60)' ] );
 
       latScale = d3.scale.linear()
-        .domain( [ 0, width ] )
+        .domain( [ 0, width / 2 ] )
         .range( [ -180, 180 ] );
     }
 
@@ -57,6 +62,15 @@ define(
 
       path = d3.geo.path()
         .projection( projection );
+    }
+
+    // win response listener
+    function onScroll( win ) {
+      for( var prop in countries ) {
+        var bool = countries[ prop ].lat >= latScale( win.scrollTop );
+
+        countries[ prop ].$el.classed( 'fade', bool );
+      }
     }
 
     /*
@@ -88,7 +102,7 @@ define(
           .enter()
             .append( 'path' )
               .attr( 'id', function( d ) { return 'id-' + d.id; } )
-              .attr( 'class', 'country' )
+              .attr( 'class', function( d ) { if( d.id !== 840 ) return 'fade'; } )
               .attr( 'fill', function( d ) { return colorScale( countries[ d.id ].lat ) } )
               .attr( 'd', path );
 
@@ -99,6 +113,11 @@ define(
             .attr( 'stroke', '#fff' )
             .attr( 'stroke-width', '.5px' )
             .attr( 'd', path );
+
+        cacheCountries();
+
+        // win bus
+        win.on( 'Win:scroll', onScroll );
       });
     }
 
