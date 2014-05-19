@@ -7,8 +7,6 @@ define(
     return Backbone.View.extend({
       tagName: 'ul',
 
-      id: 'skills',
-
       initialize: function( opts ) {
         this.win = opts.win;
 

@@ -9,12 +9,23 @@ define(
     return Backbone.View.extend({
       el: '#content',
 
+      template: function() {
+        return '<div id="skills"><h1>Required <span>Skills</span></h1></div>';
+      },
+
       initialize: function( opts ) {
         this.win = opts.win;
         this.skillsCollection = new SkillsCollection();
 
-        this.listenTo( this.skillsCollection, 'reset', this.renderSkillsCollectionView );
+        this.listenTo( this.skillsCollection, 'reset', this.render );
         this.skillsCollection.fetch( { reset: true } );
+      },
+
+      render: function() {
+        this.$el.html( this.template() );
+
+        this.renderSkillsCollectionView()
+          .renderWorldView();
       },
 
       renderSkillsCollectionView: function() {
@@ -22,14 +33,16 @@ define(
                                          collection: this.skillsCollection,
                                          win: this.win });
 
-        this.$el.append( skillsCollectionView.el );
-        this.renderWorldView();
+        this.$el.find( '#skills' )
+          .append( skillsCollectionView.el );
+        return this;
       },
 
       renderWorldView: function() {
         this.win.setHeight( this.$el );
         this.worldView = new WorldView( { win: this.win } );
         this.$el.append( this.worldView.el );
+        return this;
       }
     });
   }

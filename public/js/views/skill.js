@@ -6,9 +6,14 @@ define(
     return Backbone.View.extend({
       tagName: 'li',
 
+      className: function() {
+        return this.model.get( 'id' );
+      },
+
       template: function() {
         return ''
-          + '<h2>' + this.model.get( 'skill' ) + '</h2>';
+          + '<h2>' + this.model.get( 'skill' ) + '</h2>'
+          + '<p>' + this.model.get( 'desc' ) + '</p>';
       },
 
       initialize: function( opts ) {
