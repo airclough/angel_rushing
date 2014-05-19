@@ -81,6 +81,7 @@ path[id*="country-id-"] {
           transition: opacity .5s;
 }
 
+/* 'merica */
 #country-id-840.fade {
   opacity: 1;
 }

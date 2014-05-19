@@ -1,7 +1,9 @@
 define(
   [ 'backbone',
+    'collections/skills',
+    'views/skills-collection',
     'views/world' ],
-  function( Backbone, WorldView ) {
+  function( Backbone, SkillsCollection, SkillsCollectionView, WorldView ) {
     'use strict';
 
     return Backbone.View.extend({
@@ -9,21 +11,22 @@ define(
 
       initialize: function( opts ) {
         this.win = opts.win;
+        this.skillsCollection = new SkillsCollection();
 
-        this.renderSkillsView()
-          .renderWorldView();
+        this.listenTo( this.skillsCollection, 'reset', this.renderSkillsCollectionView );
+        this.skillsCollection.fetch( { reset: true } );
       },
 
-      renderSkillsView: function() {
-        this.$el.append( '<div id="skills"></div>' );
+      renderSkillsCollectionView: function() {
+        var skillsCollectionView = new SkillsCollectionView( { collection: this.skillsCollection } );
 
-        this.win.setHeight( this.$el );
-        return this;
+        this.$el.append( skillsCollectionView.el );
+        this.renderWorldView();
       },
 
       renderWorldView: function() {
+        this.win.setHeight( this.$el );
         this.worldView = new WorldView( { win: this.win } );
-
         this.$el.append( this.worldView.el );
       }
     });

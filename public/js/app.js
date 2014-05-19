@@ -7,9 +7,7 @@ define(
     'use strict';
 
     function init() {
-      var win = new Win();
-
-      new AppView( { win: win } );
+      new AppView( { win: new Win() } );
     }
 
     return {
