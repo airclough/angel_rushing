@@ -1,27 +1,25 @@
 define(
-  [ 'backbone' ],
-  function( Backbone ) {
+  [ 'backbone',
+    'views/world' ],
+  function( Backbone, WorldView ) {
     'use strict';
 
     return Backbone.View.extend({
       el: '#content',
 
-      template: function() {
-        return ''
-          + '<div id="world"></div>'
-          + '<div id="skills"></div>';
-      },
-
       initialize: function( opts ) {
         this.win = opts.win;
 
-        this.render();
+        this.renderWorldView();
       },
 
-      render: function() {
-        this.$el.html( this.template() );
-        return this;
+      renderWorldView: function() {
+        this.worldView = new WorldView( { win: this.win } );
+
+        this.$el.append( this.worldView.el );
       }
     });
   }
 );
+
+// Your code will be applied across many devices, browsers, and countries. So, you know, no pressure
