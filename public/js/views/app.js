@@ -18,7 +18,9 @@ define(
       },
 
       renderSkillsCollectionView: function() {
-        var skillsCollectionView = new SkillsCollectionView( { collection: this.skillsCollection } );
+        var skillsCollectionView = new SkillsCollectionView({
+                                         collection: this.skillsCollection,
+                                         win: this.win });
 
         this.$el.append( skillsCollectionView.el );
         this.renderWorldView();

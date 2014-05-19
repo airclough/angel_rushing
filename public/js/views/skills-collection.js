@@ -1,6 +1,7 @@
 define(
-  [ 'backbone' ],
-  function( Backbone ) {
+  [ 'backbone',
+    'views/skill' ],
+  function( Backbone, SkillView ) {
     'use strict';
 
     return Backbone.View.extend({
@@ -8,16 +9,21 @@ define(
 
       id: 'skills',
 
-      initialize: function() {
+      initialize: function( opts ) {
+        this.win = opts.win;
+
         this.render();
       },
 
       render: function() {
         this.collection.each( this.eachSkill, this );
+        return this;
       },
 
       eachSkill: function( skill ) {
-        console.log( skill );
+        var skillView = new SkillView( { model: skill, win: this.win } );
+
+        this.$el.append( skillView.el );
       }
     });
   }
