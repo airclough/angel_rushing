@@ -4,14 +4,14 @@ module.exports = ( function() {
   function getAll( req, res ) {
     res.json([
       {
-        id: 'html5-css',
+        id: 'html5-css3',
         skill: 'HTML5 and CSS3',
-        desc: 'The backbone of this Backbone.js powered web app, HTML5 and CSS3 are not only extremely meta, but the most vital web development skill I possess.'
+        desc: 'The backbone of this Backbone.js powered web app, HTML5 and CSS3 are not only ridiculously meta, but the most vital web development skill I possess.'
       },
       {
         id: 'cross-browser',
         skill: 'Cross-browser compatibility',
-        desc: 'Enter Modernizr and jQuery, two libraries I make use of in many of the apps and sites I build.'
+        desc: 'Enter Modernizr and jQuery, two libraries I make use of in many of the apps and websites I build. They help to blur the lines between browser vendors and editions.'
       },
       {
         id: 'js',

@@ -1,7 +1,8 @@
 define(
   [ 'backbone',
-    'world-viz' ],
-  function( Backbone, worldViz ) {
+    'views/world-viz',
+    'views/world-viz-legend' ],
+  function( Backbone, worldViz, worldVizLegend ) {
     'use strict';
 
     return Backbone.View.extend({
@@ -13,11 +14,18 @@ define(
         this.win = opts.win;
 
         this.renderWorldViz()
+          .renderWorldVizLegend()
           .subscribe();
       },
 
       renderWorldViz: function() {
         worldViz.init( this.el, this.win );
+
+        return this;
+      },
+
+      renderWorldVizLegend: function() {
+        worldVizLegend.init( this.el );
 
         return this;
       },
@@ -28,7 +36,7 @@ define(
       },
 
       onScroll: function( win ) {
-        this.$worldViz = this.$worldViz || $( 'svg' );
+        this.$worldViz = this.$worldViz || $( 'svg#map' );
 
         var y = win.height - win.viewport;
         var v = 20 + ( ( win.scrollTop / y ) * 10 );

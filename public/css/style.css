@@ -72,7 +72,7 @@ h2 {
   position: absolute;
   top: -64px;
   right: 4%;
-  color: crimson;
+  color: rgb(251,106,74);
   text-transform: uppercase;
 }
 
@@ -109,7 +109,9 @@ svg {
   display: block;
   padding: 0;
   margin: 0;
+}
 
+svg#map {
   -webkit-transform: translateY(-20%);
      -moz-transform: translateY(-20%);
       -ms-transform: translateY(-20%);
@@ -122,6 +124,17 @@ path[id*="country-id-"] {
      -moz-transition: opacity .5s;
        -o-transition: opacity .5s;
           transition: opacity .5s;
+}
+
+svg#legend {
+  position: absolute;
+  bottom: 16px;
+  left: 4%;
+}
+
+svg text {
+  font-size: 8px;
+  font-weight: 800;
 }
 
 /* 'merica */

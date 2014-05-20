@@ -54,8 +54,9 @@ define(
 
     function setScales() {
       colorScale = d3.scale.linear()
-        .domain( [ -180, 180 ] )
-        .range( [ 'rgb(204,204,204)', 'rgb(220,20,60)' ] );
+        .domain( [ -180, -90, 0, 90, 180 ] )
+        .range( [ 'rgb(254,229,217)', 'rgb(252,174,145)', 'rgb(251,106,74)',
+                  'rgb(222,45,38)', 'rgb(165,15,21)' ] );
 
       latScale = d3.scale.linear()
         .domain( [ 0, height - viewport ] )
@@ -102,6 +103,7 @@ define(
         svg = d3.select( el )
           .append( 'svg' )
             .attr({
+              id    : 'map',
               height: width,
               width : width
             });
@@ -126,7 +128,7 @@ define(
 
         cacheCountries();
 
-        // win bus
+        // bus
         win.on( 'Win:scroll', onScroll );
       });
     }
