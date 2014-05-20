@@ -57,6 +57,10 @@ h2 {
   font-weight: 800;
 }
 
+a {
+  color: #fff;
+}
+
 #content {
   min-height: inherit;
   width: inherit;
@@ -82,7 +86,7 @@ h2 {
 
 #skills ul li {
   padding: 4%;
-  color: #fcfcfc;
+  color: #fff;
   background: #333;
 }
 

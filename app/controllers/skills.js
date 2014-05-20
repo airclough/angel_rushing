@@ -11,7 +11,7 @@ module.exports = ( function() {
       {
         id: 'cross-browser',
         skill: 'Cross-browser compatibility',
-        desc: 'Enter Modernizr and jQuery, two libraries I make use of in many of the apps and websites I build. They help to blur the lines between browser vendors and editions.'
+        desc: 'Enter Modernizr and jQuery, two libraries I make use of in many of the apps and websites I build. They help to blur the lines between browser vendors and their respective editions.'
       },
       {
         id: 'js',
@@ -26,17 +26,17 @@ module.exports = ( function() {
       {
         id: 'bootstrap',
         skill: 'Responsive design (Bootstrap 3 a plus)',
-        desc: 'In the same vein as cross-browser compatibility, responsive design and the ability to render your app to different screen sizes / devices is the future of the web. And the future is now.'
+        desc: 'In the same vein as cross-browser compatibility, responsive design and the ability to render your app to different screen sizes and devices is the future of the web- And the future is now.'
       },
       {
         id: 'mysql',
         skill: 'MySQL (a plus)',
-        desc: 'While I prefer the flexiblity of noSQL databases like MongoDB for many of my projects, it is tough to rival the power of mySQL.'
+        desc: 'While I often prefer the flexiblity of noSQL databases like MongoDB and Redis when building an app, it is tough to rival the power of mySQL.'
       },
       {
         id: 'git',
         skill: 'Version control (git, github)',
-        desc: 'Sure thing. I can do that.'
+        desc: 'Sure thing. I can do <a href="https://github.com/juniorSE7EN/angel_rushing">that</a>.'
       }
     ]);
   };
